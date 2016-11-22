@@ -1,7 +1,7 @@
 # Reinforcement-Learning
 A collection of implementation of RL algorithms.
 
-TODO
+# TODO
 1. MDP (with DP)
 2. MC Prediction
 3. TD Prediction
