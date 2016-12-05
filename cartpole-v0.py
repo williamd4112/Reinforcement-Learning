@@ -23,7 +23,7 @@ def epislon_policy(Q, A, s, epislon):
 
 
 if __name__ == '__main__':
-    env = gym.make('CartPole-v0')
+    env = gym.make('CartPole-v1')
 
     env.monitor.start('/tmp/cartpole-experiment-1', force=True)
     np.random.seed(0)
@@ -35,7 +35,7 @@ if __name__ == '__main__':
     NUM_STATES = 10 ** (env.observation_space.shape[0])
     NUM_ACTIONS = (env.action_space.n)
     MAX_EPISODES = 1000
-    MAX_TIME_STEPS = 200
+    MAX_TIME_STEPS = 500
 
     # Trick: shrink the state space
     lows = np.array([-2.4, -3.0, -0.5, -2.0])
@@ -62,7 +62,6 @@ if __name__ == '__main__':
                 if t < MAX_TIME_STEPS - 1:
                     reward = -MAX_TIME_STEPS
 
-            # Step 5. Update Q(s, a)
             Q[state][action] = Q[state][action] + ALPHA * (reward + GAMMA * np.max(Q[next_state]) - Q[state][action])
 
             state = next_state
